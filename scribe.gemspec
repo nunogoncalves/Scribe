@@ -1,7 +1,7 @@
 ﻿require "rake"
 
 Gem::Specification.new do |s|
-  s.name  = "scriber"
+  s.name  = "scribe"
   s.version = "0.0.1"
   s.summary = 'Empowers your api with a documentation interface based on '     \
               'swagger. You only need to take care of creating the '           \
@@ -18,12 +18,11 @@ Gem::Specification.new do |s|
   s.homepage = ""
 
   s.files = ([`git ls-files lib/`.split("\n")] + [`git ls-files assets/`.split("\n")]).flatten
-  # s.executables << 'papyrus'
+  # s.executables << 'scribe'
 
   s.test_files = `git ls-files spec/`.split("\n")
 
   s.add_runtime_dependency 'json', '~> 1.7'
-  # s.add_runtime_dependency 'jwt', '1.0.0'
   s.add_runtime_dependency 'rack-jwt-auth', '0.0.3'
   s.add_runtime_dependency 'sinatra', '1.4.5'
   s.add_runtime_dependency 'sinatra-contrib', '1.4.2'

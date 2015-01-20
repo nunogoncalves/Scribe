@@ -7,7 +7,7 @@ require 'sinatra/assetpack'
 
 GEMDIR = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
-class Scriber < Sinatra::Base
+class Scribe < Sinatra::Base
 
   helpers  Sinatra::JSON
   register Sinatra::Partial

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scriber (0.0.1)
+    Scribe (0.0.1)
       json (~> 1.7)
       rack-jwt-auth (= 0.0.3)
       sinatra (= 1.4.5)
@@ -48,4 +48,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  scriber!
+  Scribe!
