@@ -1,3 +1,4 @@
+require "version"
 require 'json'
 require 'jwt_token_builder'
 require 'sinatra/base'

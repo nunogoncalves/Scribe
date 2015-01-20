@@ -1,8 +1,12 @@
 ﻿require "rake"
 
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'version'
+
 Gem::Specification.new do |s|
   s.name  = "scribe"
-  s.version = "0.0.1"
+  s.version = Scribe::VERSION
   s.summary = 'Empowers your api with a documentation interface based on '     \
               'swagger. You only need to take care of creating the '           \
               'documention itself and make sure the documentation json files ' \
