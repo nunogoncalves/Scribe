@@ -1,6 +1,6 @@
-require "version"
+require "scribe/version"
 require 'json'
-require 'jwt_token_builder'
+require 'scribe/jwt_token_builder'
 require 'sinatra/base'
 require 'sinatra/json'
 require 'sinatra/partial'
@@ -8,7 +8,8 @@ require 'sinatra/assetpack'
 
 GEMDIR = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
-class Scribe < Sinatra::Base
+module Scribe
+  class Base < Sinatra::Base
 
   helpers  Sinatra::JSON
   register Sinatra::Partial
@@ -45,7 +46,7 @@ class Scribe < Sinatra::Base
   get '/authentication_token' do
     status 200
 
-    json token: "#{JWTTokenBuilder.issue_token(params)}"
+    json token: "#{Scribe::JWTTokenBuilder.issue_token(params)}"
   end
 
   get '/sources' do
@@ -63,4 +64,5 @@ class Scribe < Sinatra::Base
     JSON.parse(json_str)
   end
 
+end
 end
