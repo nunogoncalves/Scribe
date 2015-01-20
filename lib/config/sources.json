@@ -1,0 +1,12 @@
+{
+  "services": [
+    {
+      "name": "ServiceName",
+      "api_docs_url": "/docs/api-docs.json",
+      "broadcasts_url": "/docs/broadcasts.json",
+      "gems_url": "/docs/gems.json",
+      "shortName": "xxx",
+      "icon": "icon"
+    }
+  ]
+}

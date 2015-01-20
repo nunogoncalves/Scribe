@@ -1,0 +1,101 @@
+.hide_me {
+  display: none;
+}
+
+.service-icon {
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+
+.btn-group {
+  margin-left: 23px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  float: left;
+  border-color: #285e8e;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn-group .btn {
+  color: #fff;
+  background-color: #3071a9;
+  border-color: #285e8e;
+}
+
+.btn-group .btn:first-child:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0px;
+}
+
+.btn-group .btn:not(:first-child):last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0px;
+}
+
+.btn-group .btn:not(:first-child):not(:last-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-group .active {
+  background-color: #285e8e;
+}
+
+#api_selector {
+  margin-top: 3px;
+}
+
+.btn-group img {
+  vertical-align: middle;
+  height: 22px;
+  margin-top: -4px;
+  margin-left: -5px;
+}
+
+.error {
+  color: red;
+}
+
+.warning {
+  color: orange;
+  font-size: 33px;
+}
+
+.fake_submit {
+  display: block;
+  clear: none;
+  float: left;
+  padding: 6px 8px;
+}
+
+.jwt_notice {
+  background: #f9f2e9;
+  border-style: dashed;
+  border-width: 1px;
+  margin-bottom: 10px;
+  padding-top: 8px;
+  border-radius: 5px;
+}

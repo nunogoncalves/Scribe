@@ -1,0 +1,42 @@
+<script id="broadcast_template" type="text/x-handlebars-template">
+  <h1>Broadcasts<img src="scriber/img/broadcast.png" style="float: right; height: 43px"></h1>
+  {{#if error}}
+    <div class="error">{{error}}</div>
+  {{else}}
+    {{#if broadcasts}}
+      <ul class="expand_options">
+        <li><a class="expand_all_a">Expand All</a></li>
+        <li><a class="colapse_all_a">Colapse All</a></li>
+      </ul>
+      <ul class="broadcasts">
+        {{#each broadcasts}}
+          <li class="broadcast documentee">
+            <div class="header">
+              <span class="clickable broadcasts routing_key blue">Routing Key: </span>
+              <span class="clickable routingKey name">{{routingKey}}</span>
+            </div>
+            <div class="expandable">
+              <div class="content">
+                <table>
+                  <tr><td><strong>Broadcaster:</strong></td><td>{{broadcaster}}</td></tr>
+                  <tr><td><strong>Routing Key:</strong></td><td>{{routingKey}}</td></tr>
+                  <tr><td><strong>Description:</strong></td><td>{{description}}</td></tr>
+                  <tr><td><strong>Payload Content Type:</strong></td><td>{{payload_content_type}}</td></tr>
+                  <tr><td><strong>Payload Data:</strong></td>
+                    <td class="bigger_info">
+                      {{#each payload_data}}
+                        <span><strong>{{@key}}</strong>: {{this}} </br></span>
+                      {{/each}}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <div class="warning">Este serviço não disponibiliza informação sobre broadcasts.</div>
+    {{/if}}
+  {{/if}}
+</script>

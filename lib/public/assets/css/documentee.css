@@ -1,0 +1,133 @@
+.expand_options {
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+  clear: none;
+  float: right;
+  margin: 14px 10px 0 0;
+}
+
+.expand_options li {
+  float: left;
+  clear: none;
+  margin: 0;
+  padding: 2px 10px;
+  border-right: 1px solid #dddddd;
+  color: #666666;
+  font-size: 0.9em;
+}
+
+.expand_options li:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.expand_options li a {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+
+.expand_options li a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: black;
+}
+
+.documentee {
+  padding-bottom: 5px;
+}
+.documentee .header {
+  background-color: #e7f0f7;
+  border: 1px solid #c3d9ec;
+  float: none;
+  clear: both;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+}
+
+.documentee .header .name {
+  padding-left: 10px;
+  cursor: pointer;
+ }
+
+ .documentee .header .routing_key {
+  padding-left: 10px;
+  cursor: pointer;
+ }
+
+.documentee .header .blue {
+  background-color: #0f6ab4;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  width: 50px;
+  font-size: 0.7em;
+  text-align: center;
+  padding: 7px 0 4px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.documentee .header .broadcasts.blue {
+  width: auto;
+  padding: 7px 5px 4px 5px;
+  cursor: pointer;
+  text-transform: none;
+}
+
+.documentee .link_container {
+  overflow: hidden;
+  padding: 0;
+  display: block;
+  clear: none;
+  float: right;
+  margin: 6px 10px 0 0;
+}
+
+.documentee .link_container li {
+  padding-right: 0;
+  border-right: none;
+  color: #0f6ab4;
+}
+
+.documentee .link_container li a {
+  color: #0f6ab4;
+}
+
+.documentee .expandable {
+  display: none;
+}
+
+.documentee .expandable .expanded {
+  display: block;
+}
+
+.documentee .content {
+  overflow: hidden;
+  background-color: #ebf3f9;
+  border: 1px solid #c3d9ec;
+  border-top: none;
+  padding: 10px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+.bigger_info {
+  border-bottom: 1px !important;
+  border-bottom-color: #c3d9ec !important;
+  border-style: solid !important;
+  border-width: 1px;
+  border-color: #c3d9ec;
+  background: #ECEADA;
+}
