@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scribe (0.0.3)
+    scribe (0.0.5)
       json (~> 1.7)
       rack-jwt-auth (= 0.0.3)
       sinatra (= 1.4.5)
