@@ -35,7 +35,7 @@ SHOW_DOCUMENTATION ('true' or 'false') and AUTHENTICATION_SECRET. The secret is 
 ## 4) To provide api documentation, you need to add your apis docs json file to the same directory.
     If you want to costumize the locations of these files you can add a sources.json file to the config folder which looks like this:
 
-    ```json
+    ```JSON
       {
         "services": [
           {
