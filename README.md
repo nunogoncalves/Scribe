@@ -36,7 +36,7 @@ SHOW_DOCUMENTATION ('true' or 'false') and AUTHENTICATION_SECRET. The secret is 
 ## 4) API
   To provide api documentation, you need to add your apis docs json file to the same directory.
 ## 5) Customization
-  If you want to costumize the locations of these files you can add a sources.json file to the config folder which looks like this:
+  If you want to costumize the locations of these files you, there is a file that you can add to allow this costumization. Add a file called sources.json to the config folder and change the location for each entry (api_docs_url, broadcasts_url and gems_url) to whatever you wish. The file should look like this: 
 
 ```javascript
 {
@@ -52,6 +52,4 @@ SHOW_DOCUMENTATION ('true' or 'false') and AUTHENTICATION_SECRET. The secret is 
   ]
 }
 ```
-
-Just change the location for each entry (api_docs_url, broadcasts_url and gems_url) to whatever you wish.
 ---
