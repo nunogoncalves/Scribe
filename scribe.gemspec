@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
 
   s.authors = ["Nuno Gonçalves"]
-  s.email = "nuno.goncalves@linkedcare.com"
+  s.email = "numicago@gmail.com"
   s.homepage = ""
 
   s.files = ([`git ls-files lib/`.split("\n")] + [`git ls-files assets/`.split("\n")]).flatten
