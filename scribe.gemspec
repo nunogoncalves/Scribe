@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.authors = ["Nuno Gonçalves"]
   s.email = "numicago@gmail.com"
-  s.homepage = ""
+  s.homepage = "https://github.com/nunogoncalves/scribe"
 
   s.files = ([`git ls-files lib/`.split("\n")] + [`git ls-files assets/`.split("\n")]).flatten
   # s.executables << 'scribe'
