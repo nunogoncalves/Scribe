@@ -8,7 +8,7 @@ This gem communicates with rack API services in order to get necessary informati
 In order to add it your app, you need to:
 
 ## 1) Add it to your gemfile
-## 2) Add the following to your config.ru file
+## 2) update config.ru file
   ```ruby
     jwt_auth_exceptions = []
 
@@ -30,12 +30,14 @@ In order to add it your app, you need to:
 Note that you need the following environment keys:
 SHOW_DOCUMENTATION ('true' or 'false') and AUTHENTICATION_SECRET. The secret is used to build a JWToken to send as http authorization header. This is the way we communicate with services at Linkedcare.
 
-## 3) This app already provides two json files to be consumed. broadcasts.json and gems.json that are contained in the public/docs folder. This will allow the client side to build the broadcasts and gems information.
+## 3) Files:
+  This app already provides two json files to be consumed. broadcasts.json and gems.json that are contained in the public/docs folder. This will allow the client side to build the broadcasts and gems information.
 
-## 4) To provide api documentation, you need to add your apis docs json file to the same directory.
-    If you want to costumize the locations of these files you can add a sources.json file to the config folder which looks like this:
+## 4) API
+  To provide api documentation, you need to add your apis docs json file to the same directory.
+  If you want to costumize the locations of these files you can add a sources.json file to the config folder which looks like this:
 
-    ```JSON
+    ```javascript
       {
         "services": [
           {
