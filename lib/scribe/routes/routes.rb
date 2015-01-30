@@ -1,15 +1,13 @@
 require 'json'
 require 'sinatra/json'
-require 'sinatra/partial'
 
 module Scribe
   class Base < Sinatra::Base
 
     helpers  Sinatra::JSON
-    register Sinatra::Partial
 
     get '/' do
-      erb :home
+      erb :home, layout: false
     end
 
     get "#{@@scribe_path}/authentication_token" do

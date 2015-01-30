@@ -1,83 +1,231 @@
-<div id='header'>
-  <div class="swagger-ui-wrap">
-    <a href="http://linkedcare.com" target="blank" style="text-decoration: none;">
-      <img src="scribe/img/papyrus.png" style="height: 30px; vertical-align: middle">
-    </a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Linkedcare Documentation</title>
+    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/documentee.css">
+    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/highlight.default.css">
+    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/screen.css">
+    <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/css?family=Droid+Sans:400,700"/>
 
-    <a id="logo" href="http://linkedcare.com" target="blank">papyrus</a>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-    <div class="btn-group" data-toggle="buttons">
-      <label id="apis_docs_label" class="btn btn-primary active" onclick="$.service_selector.selectApiDocs();"><img src="scribe/img/api.png">APIs Docs</label>
-      <label id="broadcasts_label" class="btn btn-primary" onclick="$.service_selector.selectBroadcast();"><img src="scribe/img/broadcast.png">Broadcasts</label>
-      <label id="gems_label" class="btn btn-primary" onclick="$.service_selector.selectGems();"><img src="scribe/img/ruby.png" style=></span>Gems</label>
-      <label id="how_to_label" class="btn btn-primary" onclick="$.service_selector.selectHowTo();"><img src="scribe/img/help.png" style=></span>Help</label>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery-1.8.0.min.js"></script>
+  </head>
+
+  <body>
+
+    <div id='header'>
+      <div class="swagger-ui-wrap">
+        <a href="http://linkedcare.com" target="blank" style="text-decoration: none;">
+          <img src="/scribe/assets/img/papyrus.png" style="height: 30px; vertical-align: middle">
+        </a>
+
+        <a id="logo" href="http://linkedcare.com" target="blank">papyrus</a>
+
+        <div class="btn-group" data-toggle="buttons">
+          <label id="apis_docs_label" class="btn btn-primary active" onclick="$.service_selector.selectApiDocs();"><img src="/scribe/assets/img/api.png">APIs Docs</label>
+          <label id="broadcasts_label" class="btn btn-primary" onclick="$.service_selector.selectBroadcast();"><img src="/scribe/assets/img/broadcast.png">Broadcasts</label>
+          <label id="gems_label" class="btn btn-primary" onclick="$.service_selector.selectGems();"><img src="/scribe/assets/img/ruby.png" style=></span>Gems</label>
+          <label id="how_to_label" class="btn btn-primary" onclick="$.service_selector.selectHowTo();"><img src="/scribe/assets/img/help.png" style=></span>Help</label>
+        </div>
+
+        <form id='api_selector'>
+          <div class='input'>
+            <select name="" id="service_select">
+            </select>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <form id='api_selector'>
-      <div class='input'>
-        <select name="" id="service_select">
-        </select>
+    <div id="message-bar" class="swagger-ui-wrap">
+      &nbsp;
+    </div>
+
+    <div id="swagger-ui-container" class="swagger-ui-wrap">
+    </div>
+
+    <div id="how_to_container" class="swagger-ui-wrap hide_me">
+      <h1>Usefull information</h1>
+
+      <p>Papyrus is linkedcare's service to centralize all services api documentation.
+        Papyrus comunicates with services, requesting documentation files over the form of
+        json files. These json files must conform with the <a href="https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md" target="_blank">swagger specification</a> and feed <a href="https://github.com/swagger-api/swagger-ui" target="_blank">swagger ui</a> which builds up the documentation.</p>
+
+      <p>Papyrus provides 3 kinds of documentation information:
+        <ul>
+          <li>Api - Documents every endpoint a microservice has and allows interaction with this endpoint.</li>
+          <li>Broadcasts - Describes every message that is written to the message queue.</li>
+          <li>Gems - Described the gems a given service uses. </li>
+        </ul>
+      </p>
+
+      <p>
+        Actually the api documentation is the only one who must conform with swagger specification.
+        Broadcasts and Gems just need to provide the following format:
+
+        <h3>Broadcasts</h3>
+        <script src="https://gist.github.com/nunogoncalves/6a83e4e3044d7d6b888c.js"></script>
+
+        <h3>Gems</h3>
+        <script src="https://gist.github.com/nunogoncalves/a600ab34c2a142ddeda3.js"></script>
+      </p>
+
+      <h2>How to add services</h2>
+      <p>To make papyrus aware of a service, there's a configuration file in papyrus which looks like this:
+        <script src="https://gist.github.com/nunogoncalves/7bd8f62ef3333ebaf81f.js"></script>
+        where:
+        <ul>
+          <li>api_docs_url - The url to the service which contains the api documentation json file</li>
+          <li>broacasts_url - The url to the service which contains the api documentation json file</li>
+          <li>gems_url - The url to the service which contains the api documentation json file</li>
+          <li>name - The nme of the service</li>
+          <li>shortName - Is used to provide dynamic entries when working with javascript scripts.</li>
+        </ul>
+      </p>
+
+      <p>
+        So in order to make Papyrus cominucate with a service just add its informaction to the configuration file.
+      </p>
+    </div>
+
+    <script>
+      $(function() {
+        $.sources.load();
+      });
+    </script>
+
+    <script id="broadcast_template" type="text/x-handlebars-template">
+      <h1>Broadcasts<img src="scribe/assets/img/broadcast.png" style="float: right; height: 43px"></h1>
+      {{#if error}}
+        <div class="error">{{error}}</div>
+      {{else}}
+        {{#if broadcasts}}
+          <ul class="expand_options">
+            <li><a class="expand_all_a">Expand All</a></li>
+            <li><a class="colapse_all_a">Colapse All</a></li>
+          </ul>
+          <ul class="broadcasts">
+            {{#each broadcasts}}
+              <li class="broadcast documentee">
+                <div class="header">
+                  <span class="clickable broadcasts routing_key blue">Routing Key: </span>
+                  <span class="clickable routingKey name">{{routingKey}}</span>
+                </div>
+                <div class="expandable">
+                  <div class="content">
+                    <table>
+                      <tr><td><strong>Broadcaster:</strong></td><td>{{broadcaster}}</td></tr>
+                      <tr><td><strong>Routing Key:</strong></td><td>{{routingKey}}</td></tr>
+                      <tr><td><strong>Description:</strong></td><td>{{description}}</td></tr>
+                      <tr><td><strong>Exchange:</strong></td><td>{{exchange}}</td></tr>
+                      <tr><td><strong>Payload Content Type:</strong></td><td>{{payload_content_type}}</td></tr>
+                      <tr><td><strong>Payload Data:</strong></td>
+                        <td class="bigger_info">
+                          {{#each payload_data}}
+                            <span><strong>{{@key}}</strong>: {{this}} </br></span>
+                          {{/each}}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          <div class="warning">Este serviço não disponibiliza informação sobre broadcasts.</div>
+        {{/if}}
+      {{/if}}
+    </script>
+
+    <script id="gems_template" type="text/x-handlebars-template">
+      <h1>Gems<img src="scribe/assets/img/ruby.png" style="float: right; height: 43px"></h1>
+      <h2><strong>Handy Information:</strong></h2>
+      <span>Technical extra info can be created using the following <a href="http://stackoverflow.com/questions/5177634/list-of-installed-gems" target="_blank"> link</a>. Check it out for more details.</span></br>
+      <span>Click <a href="http://www.justinweiss.com/blog/2014/04/07/a-guide-to-choosing-the-best-gems-for-your-ruby-project/" target="_blank">here</a> for a guide on choosing the best gems for your project</span>
+      {{#if error}}
+        <div class="error">{{error}}</div>
+      {{else}}
+        {{#if gems}}
+          <ul class="expand_options">
+            <li><a class="expand_all_a">Expand All</a></li>
+            <li><a class="colapse_all_a">Colapse All</a></li>
+          </ul>
+          <ul class="gems">
+            {{#each gems}}
+              <li class="gem documentee">
+                <div class="header">
+                  <span class="clickable version blue">{{current_version}}</span>
+                  <span class="clickable name">{{name}}</span>
+                  <ul class="link_container">
+                    <li><a href="{{link}}" target="_blank">Abrir link</a></li>
+                  </ul>
+                </div>
+                <div class="expandable">
+                  <div class="content">
+                    <table>
+                      <tr><td><strong>Date added:          </strong></td><td>{{added_date}}</td></tr>
+                      <tr><td><strong>Initial version:     </strong></td><td>{{initial_version}}</td></tr>
+                      <tr><td><strong>Current Version:     </strong></td><td>{{current_version}}</td></tr>
+                      <tr><td><strong>Environments:        </strong></td><td>{{environments}}</td></tr>
+                      <tr><td><strong>Who added it:        </strong></td><td>{{who}}</td></tr>
+                      <tr><td><strong>Purpose:             </strong></td><td>{{purpose}}</td></tr>
+                      <tr><td><strong>Why this:            </strong></td><td>{{why_this}}</td></tr>
+                      <tr><td><strong>Origin Project:      </strong></td><td>{{origin_project}}</td></tr>
+                      <tr><td><strong>Dependencies:        </strong></td><td>{{dependencies}}</td></tr>
+                      <tr><td><strong>Tecnhical Extra Info:</strong></td><td class="bigger_info">{{tecnhical_extra_info}}</td></tr>
+                    </table>
+                  </div>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          <div class="warning">Este serviço não disponibiliza informação sobre gems</div>
+        {{/if}}
+      {{/if}}
+    </script>
+
+    <script id="jwt_notice_template" type="text/x-handlebars-template">
+      <div class="jwt_notice">
+        <div>
+          <div style="display: inline-block; width: 75px">
+            <img src="scribe/assets/img/important.png" style="height: 75px; margin-bottom: 23px">
+          </div>
+          <div style="display: inline-block; width: 878px">
+            <p><strong>Important!</strong> The following fields fields: <strong>app_token</strong>, <strong>layer_token</strong>, <strong>lang</strong>, <strong>creator_type</strong> and <strong>creator_id</strong> are special.</p>
+
+            <p>The documentations bellow indicates these fields as being header parameters. That is not totally true. These fields must be included within a <a href="http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">jwt</a> token which goes then in a header called "authorization".</p>
+
+            <p>So rather than sending the fields independently, you should build a jwt token using the linkedcare authorization secret, and sending it via authorization header. Check <a hred='http://jwt.io/'>here</a> to know more.
+            </p>
+
+          </div>
+        </div>
       </div>
-    </form>
-  </div>
-</div>
+    </script>
 
-<div id="message-bar" class="swagger-ui-wrap">
-  &nbsp;
-</div>
-
-<div id="swagger-ui-container" class="swagger-ui-wrap">
-</div>
-
-<div id="how_to_container" class="swagger-ui-wrap hide_me">
-  <h1>Usefull information</h1>
-
-  <p>Papyrus is linkedcare's service to centralize all services api documentation.
-    Papyrus comunicates with services, requesting documentation files over the form of
-    json files. These json files must conform with the <a href="https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md" target="_blank">swagger specification</a> and feed <a href="https://github.com/swagger-api/swagger-ui" target="_blank">swagger ui</a> which builds up the documentation.</p>
-
-  <p>Papyrus provides 3 kinds of documentation information:
-    <ul>
-      <li>Api - Documents every endpoint a microservice has and allows interaction with this endpoint.</li>
-      <li>Broadcasts - Describes every message that is written to the message queue.</li>
-      <li>Gems - Described the gems a given service uses. </li>
-    </ul>
-  </p>
-
-  <p>
-    Actually the api documentation is the only one who must conform with swagger specification.
-    Broadcasts and Gems just need to provide the following format:
-
-    <h3>Broadcasts</h3>
-    <script src="https://gist.github.com/nunogoncalves/6a83e4e3044d7d6b888c.js"></script>
-
-    <h3>Gems</h3>
-    <script src="https://gist.github.com/nunogoncalves/a600ab34c2a142ddeda3.js"></script>
-  </p>
-
-  <h2>How to add services</h2>
-  <p>To make papyrus aware of a service, there's a configuration file in papyrus which looks like this:
-    <script src="https://gist.github.com/nunogoncalves/7bd8f62ef3333ebaf81f.js"></script>
-    where:
-    <ul>
-      <li>api_docs_url - The url to the service which contains the api documentation json file</li>
-      <li>broacasts_url - The url to the service which contains the api documentation json file</li>
-      <li>gems_url - The url to the service which contains the api documentation json file</li>
-      <li>name - The nme of the service</li>
-      <li>shortName - Is used to provide dynamic entries when working with javascript scripts.</li>
-    </ul>
-  </p>
-
-  <p>
-    So in order to make Papyrus cominucate with a service just add its informaction to the configuration file.
-  </p>
-</div>
-
-<script>
-  $(function() {
-    $.sources.load();
-  });
-</script>
-<%= partial :"templates/broadcasts" %>
-<%= partial :"templates/gems" %>
-<%= partial :"templates/jwt_notice" %>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/underscore.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/backbone-min.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/handlebars-1.0.0.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/highlight.7.3.pack.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.ba-bbq.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.ba-bbq.min.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.slideto.min.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.wiggle.min.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/select2.min.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/select2_locale_pt-PT.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/shred.bundle.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/swagger-ui.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/vendor/swagger.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/authenticator.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/broadcasts.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/gems.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/service_selector.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/sources.js"></script>
+    <script type="text/javascript" src="/scribe/assets/js/swagg_it.js"></script>
+  </body>
+</html>

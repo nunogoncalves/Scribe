@@ -22,14 +22,12 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/nunogoncalves/scribe"
 
   s.files = ([`git ls-files lib/`.split("\n")] + [`git ls-files assets/`.split("\n")]).flatten
-  # s.executables << 'scribe'
 
   s.test_files = `git ls-files spec/`.split("\n")
 
   s.add_runtime_dependency 'json', '~> 1.7'
   s.add_runtime_dependency 'rack-jwt-auth', '0.0.3'
   s.add_runtime_dependency 'sinatra', '1.4.5'
+  s.add_runtime_dependency 'rack-contrib', '1.1.0'
   s.add_runtime_dependency 'sinatra-contrib', '1.4.2'
-  s.add_runtime_dependency 'sinatra-partial', '0.4.0'
-  s.add_runtime_dependency 'sinatra-assetpack', '0.3.3'#, :require => 'sinatra/assetpack'
 end

@@ -1,5 +1,4 @@
 require "scribe/config/env"
-require "scribe/config/asset_config"
 require "scribe/routes/routes"
 require "scribe/version"
 require 'scribe/modules/jwt_token_builder'
@@ -13,6 +12,5 @@ module Scribe
     this_dir = GEMDIR.join("lib/scribe")
     set :views,  this_dir.join("views")
     set :public_folder, this_dir.join("public")
-    set :partial_template_engine, :erb
   end
 end
