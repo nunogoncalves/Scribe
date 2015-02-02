@@ -12,7 +12,8 @@ module Scribe
 
       Rack::Jwt::Auth::AuthToken.issue_token(
         params.merge(jwt_params),
-        ENV.fetch('AUTHENTICATION_SECRET'))
+        Scribe.authentication_secret)
+        # ENV.fetch('AUTHENTICATION_SECRET'))
     end
 
     def self.ten_seconds_from_now_in_millis

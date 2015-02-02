@@ -7,6 +7,14 @@ require 'sinatra/base'
 GEMDIR = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
 module Scribe
+
+  class << self
+    attr_accessor :authentication_secret
+  end
+
+  def self.configure
+    yield self
+  end
   class Base < Sinatra::Base
 
     this_dir = GEMDIR.join("lib/scribe")
