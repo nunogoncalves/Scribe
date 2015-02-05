@@ -10,10 +10,10 @@ module Scribe
         issuer: 'Papyrus'
       }
 
-      Rack::Jwt::Auth::AuthToken.issue_token(
-        params.merge(jwt_params),
-        Scribe.authentication_secret)
-        # ENV.fetch('AUTHENTICATION_SECRET'))
+      auth_token = Rack::Jwt::Auth::AuthToken
+        .issue_token(params.merge(jwt_params), Scribe.authentication_secret)
+
+      "Bearer #{auth_token}"
     end
 
     def self.ten_seconds_from_now_in_millis
