@@ -18,7 +18,7 @@ In order to add it your app, you need to:
 
       use Rack::TryStatic,
         root: File.expand_path('../public', __FILE__),
-        urls: %w[/],
+        urls: %w[/docs],
         try: []
     end
 
