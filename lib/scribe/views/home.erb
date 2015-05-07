@@ -193,14 +193,14 @@
       <div class="jwt_notice">
         <div>
           <div style="display: inline-block; width: 75px">
-            <img src="scribe/assets/img/important.png" style="height: 75px; margin-bottom: 23px">
+            <img src="scribe/assets/img/information.png" style="height: 75px; margin-bottom: 23px">
           </div>
           <div style="display: inline-block; width: 878px">
             <p><strong>Important!</strong> The following fields fields: <strong>app_token</strong>, <strong>layer_token</strong>, <strong>lang</strong>, <strong>creator_type</strong> and <strong>creator_id</strong> are special.</p>
 
             <p>The documentations bellow indicates these fields as being header parameters. That is not totally true. These fields must be included within a <a href="http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">jwt</a> token which goes then in a header called "authorization".</p>
 
-            <p>So rather than sending the fields independently, you should build a jwt token using the linkedcare authorization secret, and sending it via authorization header. Check <a hred='http://jwt.io/'>here</a> to know more.
+            <p>So rather than sending the fields independently, you should build a jwt token using the linkedcare authorization secret, and sending it via authorization header. Check <a href='http://jwt.io/' target="_blank">here</a> to know more.
             </p>
 
           </div>

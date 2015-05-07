@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    scribe (0.0.8)
+    scribe (0.0.11)
       json (~> 1.7)
-      rack-contrib (= 1.1.0)
-      rack-jwt-auth (= 0.0.3)
+      rack-contrib (= 1.2.0)
+      rack-jwt-auth (= 1.0.3)
       sinatra (= 1.4.5)
       sinatra-contrib (= 1.4.2)
 
@@ -13,12 +13,12 @@ GEM
   specs:
     backports (3.6.4)
     json (1.8.2)
-    jwt (1.2.1)
-    multi_json (1.10.1)
-    rack (1.6.0)
-    rack-contrib (1.1.0)
+    jwt (1.4.1)
+    multi_json (1.11.0)
+    rack (1.6.1)
+    rack-contrib (1.2.0)
       rack (>= 0.9.1)
-    rack-jwt-auth (0.0.3)
+    rack-jwt-auth (1.0.3)
       jwt (~> 1.0)
     rack-protection (1.5.3)
       rack

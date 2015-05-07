@@ -28,6 +28,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'json', '~> 1.7'
   s.add_runtime_dependency 'rack-jwt-auth', '1.0.3'
   s.add_runtime_dependency 'sinatra', '1.4.5'
-  s.add_runtime_dependency 'rack-contrib', '1.1.0'
+  s.add_runtime_dependency 'rack-contrib', '1.2.0'
   s.add_runtime_dependency 'sinatra-contrib', '1.4.2'
 end
