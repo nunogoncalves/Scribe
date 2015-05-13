@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scribe (0.0.12)
+    scribe (0.0.13)
       json (~> 1.7)
       rack-contrib (= 1.2.0)
       rack-jwt-auth (= 1.0.3)

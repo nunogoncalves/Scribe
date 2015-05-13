@@ -23,19 +23,9 @@ module Scribe
     private
 
     def load_sources_file
-      binding.pry
-      if Dir['config/sources.json'].empty?
-        json_str = File.read("#{GEMDIR.to_s}/lib/scribe/config/sources.json")
-      else
-        json_str = File.read('config/sources.json')
-      end
+      json_str = File.read(sources_file_location)
       JSON.parse(json_str)
     end
-
-    # def load_sources_file
-    #   json_str = File.read(sources_file_location)
-    #   JSON.parse(json_str)
-    # end
 
     def sources_file_location
       if sources_file_location_exists?
