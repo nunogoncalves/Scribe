@@ -20,5 +20,7 @@ module Scribe
     this_dir = GEMDIR.join("lib/scribe")
     set :views,  this_dir.join("views")
     set :public_folder, this_dir.join("public")
+
+    Scribe.authentication_secret = ENV['AUTHENTICATION_SECRET']
   end
 end
