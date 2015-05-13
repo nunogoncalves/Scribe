@@ -219,6 +219,78 @@
       </div>
     </script>
 
+    <script id="auth_token_params_template" type="text/x-handlebars-template">
+      <tr>
+        <td class="code required">app_token</td>
+        <td>
+          <input class="parameter required" minlength="1" name="app_token" placeholder="(required)" type="text" value="">
+        </td>
+        <td><strong>App Token</strong></td>
+        <td>header</td>
+        <td><span class="model-signature">string</span></td>
+      </tr>
+      <tr>
+        <td class="code required">layer_token</td>
+        <td>
+          <input class="parameter required" minlength="1" name="layer_token" placeholder="(required)" type="text" value="">
+        </td>
+        <td><strong>Layer Token</strong></td>
+        <td>header</td>
+        <td><span class="model-signature">string</span></td>
+      </tr>
+      <tr>
+        <td class="code">lang</td>
+        <td>
+          <select class="parameter" name="lang">
+            <option selected="" value=""></option>
+            <option value="en">en</option>
+            <option value="pt">pt</option>
+          </select>
+        </td>
+        <td>Language (either 'en' or 'pt')</td>
+        <td>header</td>
+        <td><span class="model-signature">string</span></td>
+      </tr>
+      <tr>
+        <td class="code">creator_type</td>
+        <td>
+          <select class="parameter" name="creator_type">
+            <option value="Medic">Medic</option>
+            <option value="Patient">Patient</option>
+          </select>
+        </td>
+        <td>Creator Type</td>
+        <td>header</td>
+        <td><span class="model-signature">string</span></td></tr> <tr><td class="code required">creator_id</td>
+        <td>
+          <input class="parameter required" minlength="1" name="creator_id" placeholder="(required)" type="text" value="">
+        </td>
+        <td><strong>Creator Id</strong></td>
+        <td>header</td>
+        <td><span class="model-signature">integer</span></td>
+      </tr>
+      <tr>
+        <td class="code required">medic_id</td>
+        <td>
+          <input class="parameter required" minlength="1" name="medic_id" placeholder="(required)" type="text" value="">
+        </td>
+        <td><strong>Medic Id</strong></td>
+        <td>query</td>
+        <td><span class="model-signature">integer</span></td>
+      </tr>
+      <tr>
+        <td class="code">uid</td>
+        <td>
+          <input class="parameter" minlength="0" name="uid" placeholder="" type="text" value="">
+        </td>
+        <td>Patient UID</td>
+        <td>header</td>
+        <td>
+          <span class="model-signature">integer</span>
+        </td>
+      </tr>
+    </script>
+
     <script type="text/javascript" src="<%= js_path %>/vendor/underscore.js"></script>
     <script type="text/javascript" src="<%= js_path %>/vendor/backbone-min.js"></script>
     <script type="text/javascript" src="<%= js_path %>/vendor/handlebars-1.0.0.js"></script>
