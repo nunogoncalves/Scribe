@@ -2,16 +2,27 @@
 <html>
   <head>
     <title>Linkedcare Documentation</title>
-    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/documentee.css">
-    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/highlight.default.css">
-    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/select2.css">
-    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/scribe/assets/css/screen.css">
+
+    <% css_path = "#{@scribe_path}/assets/css" %>
+    <% js_path = "#{@scribe_path}/assets/js" %>
+    <% img_path = "#{@scribe_path}/assets/img" %>
+
+    <script> __scribe_path__ = "<%= @scribe_path %>"; </script>
+
+    <link rel="stylesheet" type="text/css" href="<%= css_path %>/documentee.css">
+    <link rel="stylesheet" type="text/css" href="<%= css_path %>/highlight.default.css">
+    <%# if @scribe_path.present? %>
+      <!-- <link rel="stylesheet" type="text/css" href="<%= css_path %>/scribe_select2.css"> -->
+    <%# else %>
+      <link rel="stylesheet" type="text/css" href="<%= css_path %>/select2.css">
+    <%# end %>
+    <link rel="stylesheet" type="text/css" href="<%= css_path %>/style.css">
+    <link rel="stylesheet" type="text/css" href="<%= css_path %>/screen.css">
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/css?family=Droid+Sans:400,700"/>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
 
-    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/jquery-1.8.0.min.js"></script>
   </head>
 
   <body>
@@ -19,16 +30,16 @@
     <div id='header'>
       <div class="swagger-ui-wrap">
         <a href="http://linkedcare.com" target="blank" style="text-decoration: none;">
-          <img src="/scribe/assets/img/papyrus.png" style="height: 30px; vertical-align: middle">
+          <img src="<%= img_path %>/papyrus.png" style="height: 30px; vertical-align: middle">
         </a>
 
         <a id="logo" href="http://linkedcare.com" target="blank">papyrus</a>
 
         <div class="btn-group" data-toggle="buttons">
-          <label id="apis_docs_label" class="btn btn-primary active" onclick="$.service_selector.selectApiDocs();"><img src="/scribe/assets/img/api.png">APIs Docs</label>
-          <label id="broadcasts_label" class="btn btn-primary" onclick="$.service_selector.selectBroadcast();"><img src="/scribe/assets/img/broadcast.png">Broadcasts</label>
-          <label id="gems_label" class="btn btn-primary" onclick="$.service_selector.selectGems();"><img src="/scribe/assets/img/ruby.png" style=></span>Gems</label>
-          <label id="how_to_label" class="btn btn-primary" onclick="$.service_selector.selectHowTo();"><img src="/scribe/assets/img/help.png" style=></span>Help</label>
+          <label id="apis_docs_label" class="btn btn-primary active" onclick="$.service_selector.selectApiDocs();"><img src="<%= img_path %>/api.png">APIs Docs</label>
+          <label id="broadcasts_label" class="btn btn-primary" onclick="$.service_selector.selectBroadcast();"><img src="<%= img_path %>/broadcast.png">Broadcasts</label>
+          <label id="gems_label" class="btn btn-primary" onclick="$.service_selector.selectGems();"><img src="<%= img_path %>/ruby.png" style=></span>Gems</label>
+          <label id="how_to_label" class="btn btn-primary" onclick="$.service_selector.selectHowTo();"><img src="<%= img_path %>/help.png" style=></span>Help</label>
         </div>
 
         <form id='api_selector'>
@@ -208,24 +219,24 @@
       </div>
     </script>
 
-    <script type="text/javascript" src="/scribe/assets/js/vendor/underscore.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/backbone-min.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/handlebars-1.0.0.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/highlight.7.3.pack.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.ba-bbq.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.ba-bbq.min.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.slideto.min.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/jquery.wiggle.min.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/select2.min.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/select2_locale_pt-PT.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/shred.bundle.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/swagger-ui.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/vendor/swagger.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/authenticator.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/broadcasts.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/gems.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/service_selector.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/sources.js"></script>
-    <script type="text/javascript" src="/scribe/assets/js/swagg_it.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/underscore.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/backbone-min.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/handlebars-1.0.0.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/highlight.7.3.pack.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/jquery.ba-bbq.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/jquery.ba-bbq.min.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/jquery.slideto.min.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/jquery.wiggle.min.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/select2.min.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/select2_locale_pt-PT.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/shred.bundle.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/swagger-ui.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/vendor/swagger.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/authenticator.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/broadcasts.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/gems.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/service_selector.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/sources.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/swagg_it.js"></script>
   </body>
 </html>
