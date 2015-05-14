@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/documentee.css">
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/highlight.default.css">
-    <% select2_file = "#{'scribe_' if @scribe_path.present? }select2.css" %>
+    <% select2_file = "#{'scribe_' if !@scribe_path.empty? }select2.css" %>
     <link rel="stylesheet" type="text/css" href="<%= "#{css_path}/#{select2_file}" %>">
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/style.css">
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/screen.css">
@@ -47,7 +47,6 @@
         </form>
       </div>
     </div>
-
     <div id="message-bar" class="swagger-ui-wrap">
       &nbsp;
     </div>
@@ -101,6 +100,7 @@
 
     <script>
       $(function() {
+        $.handlebar_helpers.load();
         $.sources.load();
       });
     </script>
@@ -198,103 +198,54 @@
     </script>
 
     <script id="jwt_notice_template" type="text/x-handlebars-template">
-      <div class="jwt_notice">
-        <div>
-          <div style="display: inline-block; width: 75px">
-            <img src="<%= img_path %>/information.png" style="height: 75px; margin-bottom: 23px">
-          </div>
-          <div style="display: inline-block; width: 878px">
-            <p><strong>Important!</strong> The following fields fields: <strong>app_token</strong>, <strong>layer_token</strong>, <strong>lang</strong>, <strong>creator_type</strong> and <strong>creator_id</strong> are special.</p>
+      {{#if has_auth_tokens}}
+        <div class="jwt_notice">
+          <div>
+            <div style="display: inline-block; width: 75px">
+              <img src="<%= img_path %>/information.png" style="height: 75px; margin-bottom: 23px">
+            </div>
+            <div style="display: inline-block; width: 878px">
+              <p><strong>Important!</strong> The following fields fields: {{#each jwt_auth_tokens}}<strong>{{name}}</strong>, {{/each}} are special.</p>
 
-            <p>The documentations bellow indicates these fields as being header parameters. That is not totally true. These fields must be included within a <a href="http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">jwt</a> token which goes then in a header called "authorization".</p>
+              <p>The documentations bellow indicates these fields as being header parameters. That is not totally true. These fields must be included within a <a href="http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">jwt</a> token which goes then in a header called "authorization".</p>
 
-            <p>So rather than sending the fields independently, you should build a jwt token using the linkedcare authorization secret, and sending it via authorization header. Check <a href='http://jwt.io/' target="_blank">here</a> to know more.
-            </p>
+              <p>So rather than sending the fields independently, you should build a jwt token using the linkedcare authorization secret, and sending it via authorization header. Check <a href='http://jwt.io/' target="_blank">here</a> to know more.
+              </p>
 
+            </div>
           </div>
         </div>
-      </div>
+      {{/if}}
     </script>
 
-    <script id="auth_token_params_template" type="text/x-handlebars-template">
-      <tr class="auth_token_param">
-        <td class="code required">app_token</td>
-        <td>
-          <input class="parameter required" minlength="1" name="app_token" placeholder="(required)" type="text" value="">
-        </td>
-        <td><strong>App Token</strong></td>
-        <td>header</td>
-        <td><span class="model-signature">string</span></td>
-      </tr>
-      <tr class="auth_token_param">
-        <td class="code required">layer_token</td>
-        <td>
-          <input class="parameter required" minlength="1" name="layer_token" placeholder="(required)" type="text" value="">
-        </td>
-        <td><strong>Layer Token</strong></td>
-        <td>header</td>
-        <td><span class="model-signature">string</span></td>
-      </tr>
-      <tr class="auth_token_param">
-        <td class="code"><strong>lang</strong></td>
-        <td>
-          <select class="parameter" name="lang">
-            <option value="pt">pt</option>
-            <option value="en">en</option>
-          </select>
-        </td>
-        <td><strong>Language</strong></td>
-        <td>header</td>
-        <td><span class="model-signature">string</span></td>
-      </tr>
-      <tr class="auth_token_param">
-        <td class="code"><strong>creator_type</strong></td>
-        <td>
-          <select class="parameter" name="creator_type">
-            <option value="Medic">Medic</option>
-            <option value="Patient">Patient</option>
-          </select>
-        </td>
-        <td><strong>Creator Type</strong></td>
-        <td>header</td>
-        <td><span class="model-signature">string</span></td>
-      </tr>
-      <tr class="auth_token_param">
-        <td class="code required"><strong>creator_id</strong></td>
-        <td>
-          <input class="parameter required" minlength="1" name="creator_id" placeholder="(required)" type="text" value="">
-        </td>
-        <td><strong>Creator Id</strong></td>
-        <td>header</td>
-        <td><span class="model-signature">integer</span></td>
-      </tr>
-      <tr class="auth_token_param">
-        <td class="code"><strong>uid</strong></td>
-        <td>
-          <input class="parameter" minlength="0" name="uid" placeholder="" type="text" value="">
-        </td>
-        <td><strong>Patient UID</strong></td>
-        <td>header</td>
-        <td>
-          <span class="model-signature">integer</span>
-        </td>
-      </tr>
-      <tr class="auth_token_param">
-        <td class="code"><strong>patient_id</strong></td>
-        <td>
-          <input class="parameter" minlength="0" name="patient_id" placeholder="" type="text" value="">
-        </td>
-        <td><strong>Patient ID</strong></td>
-        <td>header</td>
-        <td>
-          <span class="model-signature">integer</span>
-        </td>
-      </tr>
+     <script id="auth_token_params_template" type="text/x-handlebars-template">
+      {{#each jwt_auth_tokens}}
+        <tr class="auth_token_param">
+          <td class="code {{#if required}}required{{/if}}"><strong>{{name}}</strong></td>
+          {{#ifCond type 'select'}}
+            <td>
+              <select class="parameter" name="{{name}}">
+                {{#each options}}
+                  <option value="{{value}}">{{text}}</option>
+                {{/each}}
+              </select>
+            </td>
+          {{else}}
+            <td>
+              <input class="parameter {{#if required}}required{{/if}}" minlength="1" name="{{name}}" placeholder="{{#if required}}(required){{/if}}" type="text" value="">
+            </td>
+          {{/ifCond}}
+          <td><strong>{{title}}</strong></td>
+          <td>header</td>
+          <td><span class="model-signature">{{signature}}</span></td>
+        </tr>
+      {{/each}}
     </script>
 
     <script type="text/javascript" src="<%= js_path %>/vendor/underscore.js"></script>
     <script type="text/javascript" src="<%= js_path %>/vendor/backbone-min.js"></script>
     <script type="text/javascript" src="<%= js_path %>/vendor/handlebars-1.0.0.js"></script>
+    <script type="text/javascript" src="<%= js_path %>/handlebars_helpers.js"></script>
     <script type="text/javascript" src="<%= js_path %>/vendor/highlight.7.3.pack.js"></script>
     <script type="text/javascript" src="<%= js_path %>/vendor/jquery.ba-bbq.js"></script>
     <script type="text/javascript" src="<%= js_path %>/vendor/jquery.ba-bbq.min.js"></script>
