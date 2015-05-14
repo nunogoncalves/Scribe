@@ -11,11 +11,8 @@
 
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/documentee.css">
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/highlight.default.css">
-    <%# if @scribe_path.present? %>
-      <!-- <link rel="stylesheet" type="text/css" href="<%= css_path %>/scribe_select2.css"> -->
-    <%# else %>
-      <link rel="stylesheet" type="text/css" href="<%= css_path %>/select2.css">
-    <%# end %>
+    <% select2_file = "#{'scribe_' if @scribe_path.present? }select2.css" %>
+    <link rel="stylesheet" type="text/css" href="<%= "#{css_path}/#{select2_file}" %>">
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/style.css">
     <link rel="stylesheet" type="text/css" href="<%= css_path %>/screen.css">
     <link rel='stylesheet' type='text/css' href="//fonts.googleapis.com/css?family=Droid+Sans:400,700"/>
@@ -239,7 +236,7 @@
         <td><span class="model-signature">string</span></td>
       </tr>
       <tr class="auth_token_param">
-        <td class="code">lang</td>
+        <td class="code"><strong>lang</strong></td>
         <td>
           <select class="parameter" name="lang">
             <option value="pt">pt</option>
@@ -251,7 +248,7 @@
         <td><span class="model-signature">string</span></td>
       </tr>
       <tr class="auth_token_param">
-        <td class="code">creator_type</td>
+        <td class="code"><strong>creator_type</strong></td>
         <td>
           <select class="parameter" name="creator_type">
             <option value="Medic">Medic</option>
@@ -263,7 +260,7 @@
         <td><span class="model-signature">string</span></td>
       </tr>
       <tr class="auth_token_param">
-        <td class="code required">creator_id</td>
+        <td class="code required"><strong>creator_id</strong></td>
         <td>
           <input class="parameter required" minlength="1" name="creator_id" placeholder="(required)" type="text" value="">
         </td>
@@ -272,11 +269,22 @@
         <td><span class="model-signature">integer</span></td>
       </tr>
       <tr class="auth_token_param">
-        <td class="code">uid</td>
+        <td class="code"><strong>uid</strong></td>
         <td>
           <input class="parameter" minlength="0" name="uid" placeholder="" type="text" value="">
         </td>
         <td><strong>Patient UID</strong></td>
+        <td>header</td>
+        <td>
+          <span class="model-signature">integer</span>
+        </td>
+      </tr>
+      <tr class="auth_token_param">
+        <td class="code"><strong>patient_id</strong></td>
+        <td>
+          <input class="parameter" minlength="0" name="patient_id" placeholder="" type="text" value="">
+        </td>
+        <td><strong>Patient ID</strong></td>
         <td>header</td>
         <td>
           <span class="model-signature">integer</span>
