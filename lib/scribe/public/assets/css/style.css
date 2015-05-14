@@ -99,3 +99,7 @@
   padding-top: 8px;
   border-radius: 5px;
 }
+
+tr.auth_token_param {
+  background: #CAE9F5;
+}
