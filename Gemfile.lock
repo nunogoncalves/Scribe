@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    scribe (0.0.14)
+    scribe (0.0.15)
       json (~> 1.7)
       rack-contrib (= 1.2.0)
       rack-jwt-auth (= 1.0.3)
-      sinatra (= 1.4.5)
+      sinatra
       sinatra-contrib (= 1.4.2)
 
 GEM
